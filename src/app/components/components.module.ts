@@ -7,16 +7,18 @@ import { FullCalendarComponent } from './full-calendar/full-calendar.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { EventDialogComponent } from './event-dialog/event-dialog.component';
+import { DigitOnlyDirective } from '../directives/digitOnly.directive';
 @NgModule({
   imports: [
     CommonModule,    
     FormsModule,
     HighchartsChartModule,
-    MaterialModule,
+    MaterialModule
   ],
   declarations: [
   FullCalendarComponent,
   LineChartComponent,
+  DigitOnlyDirective,
   EventDialogComponent],
   exports:[FullCalendarComponent,LineChartComponent],
   providers:[DataService],
