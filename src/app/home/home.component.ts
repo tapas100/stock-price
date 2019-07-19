@@ -14,7 +14,10 @@ import * as moment from 'moment';
 })
 export class HomeComponent implements OnInit {
   prices: any[];
-  priceData:any;
+  priceData: any;
+  startDate: any;
+  endDate: any;
+  maxProfit:any;
   constructor(private eventService: EventService, private dataSaervice: DataService) { }
   ngOnInit(): void {
     this.getPrices();
@@ -51,11 +54,17 @@ export class HomeComponent implements OnInit {
 
   formatPricesForChart(prices) {
     let temp = []
+    this.calculateMaxProfit(prices.map(ele => { return ele.fields.price }));
     prices.forEach(element => {
       temp.push([new Date(element.fields.date).getTime(), Number(element.fields.price)])
     })
     temp.sort()
+    this.startDate = moment(temp[0][0]).format('ll');
+    this.endDate = moment(temp[temp.length - 1][0]).format('ll');
     this.priceData = temp;
+  }
+  calculateMaxProfit(prices) {
+    this.maxProfit = (prices[prices.length - 1] * 10) - (prices[0] * 10);
   }
 }
 
