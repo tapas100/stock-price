@@ -63,7 +63,9 @@ export class HomeComponent implements OnInit {
     this.endDate = moment(temp[temp.length - 1][0]).format('ll');
     this.priceData = temp;
   }
+
   calculateMaxProfit(prices) {
+    prices.sort();
     this.maxProfit = (prices[prices.length - 1] * 10) - (prices[0] * 10);
   }
 }
