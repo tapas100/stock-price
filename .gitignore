@@ -4,8 +4,6 @@
 /dist
 /tmp
 /out-tsc
-src/app/components
-src/app/interceptors
 src/app/services
 # dependencies
 /node_modules
