@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-8">
+        <app-full-calendar [eventData]="prices"></app-full-calendar>
+    </div>
+    <div class="col-md-4">
+        <app-line-chart [data]="priceData"></app-line-chart>
+        <div class="row mt-3 ml-0 mr-0">
+            <div class="col-md-6 text-center mat-elevation-z2 p-2">
+                <p>Start Date</p>
+                <span>{{startDate}}</span>
+            </div>
+            <div class="col-md-6 text-center mat-elevation-z2 p-2">
+                <p>End Date</p>
+                <span>{{endDate}}</span>
+            </div>
+        </div>
+        <div class="text-center mat-elevation-z2 mt-3">
+               <p>Max Profit</p>
+               <span>{{maxProfit}}</span>
+        </div>
+    </div>
+</div>
