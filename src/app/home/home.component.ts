@@ -14,21 +14,23 @@ import * as moment from 'moment';
 })
 export class HomeComponent implements OnInit {
   prices: any[];
-  constructor(private eventService: EventService,private dataSaervice:DataService) { }
+  priceData:any;
+  constructor(private eventService: EventService, private dataSaervice: DataService) { }
   ngOnInit(): void {
     this.getPrices();
     this.getEvents();
   }
 
   getEvents() {
-    this.dataSaervice.priceList$.subscribe(res=>{
-        this.getPrices()
+    this.dataSaervice.priceList$.subscribe(res => {
+      this.getPrices()
     })
-    
+
   }
-  getPrices(){
+  getPrices() {
     this.eventService.getPrices().subscribe(res => {
       this.formatPricesForCalendar(res.records);
+      this.formatPricesForChart(res.records);
     })
   }
   formatPricesForCalendar(prices) {
@@ -37,14 +39,23 @@ export class HomeComponent implements OnInit {
       this.prices.push({
         title: 'Rs. ' + element.fields.price,
         start: moment(element.fields.date),
-        data: { 
-           id: element.id,
-           eventId: element.fields.eventId,
-           date:element.fields.date,
-           price:element.fields.price
-          }
+        data: {
+          id: element.id,
+          eventId: element.fields.eventId,
+          date: element.fields.date,
+          price: element.fields.price
+        }
       })
     });
+  }
+
+  formatPricesForChart(prices) {
+    let temp = []
+    prices.forEach(element => {
+      temp.push([new Date(element.fields.date).getTime(), Number(element.fields.price)])
+    })
+    temp.sort()
+    this.priceData = temp;
   }
 }
 
