@@ -6,7 +6,6 @@
 /out-tsc
 src/app/components
 src/app/interceptors
-src/app/models
 src/app/services
 # dependencies
 /node_modules
