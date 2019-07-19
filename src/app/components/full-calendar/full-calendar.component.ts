@@ -46,7 +46,7 @@ export class FullCalendarComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(
       res => {
-        if (res) {
+        if (res.price) {
           this.eventService.updatePriceById(calEvent.data.id, res).subscribe(response => {
             this.dataService.handlepriceList();
           })

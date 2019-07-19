@@ -2,9 +2,9 @@
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Enter Stock Price</mat-label>
-    <input matInput [(ngModel)]="input" DigitOnly>
+    <input #price matInput [(ngModel)]="input" DigitOnly>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="input" cdkFocusInitial (click)="submit()">Ok</button>
+  <button mat-button  [disabled]="isInvalid()"  (click)="submit()">Ok</button>
 </div>

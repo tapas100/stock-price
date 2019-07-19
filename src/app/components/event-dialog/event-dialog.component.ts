@@ -37,4 +37,7 @@ export class EventDialogComponent implements OnInit {
     this.dialogRef.close(this.eventData);
   }
 
+  isInvalid(){
+    return this.input == undefined ? true :false;
+  }
 }
