@@ -24,7 +24,6 @@ export class FullCalendarComponent implements OnInit {
   }
 
   dayClick(date, jsEvent, activeView) {
-    // console.log('day click', date, jsEvent, activeView);
     if (jsEvent.target.innerText != "") return;
     const dialogRef = this.dialog.open(EventDialogComponent, {
       data: {
@@ -33,23 +32,25 @@ export class FullCalendarComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(
       res => {
-        this.eventService.createPrice(res).subscribe(response => {
-          this.dataService.handlepriceList();
-        })
+        if (res) {
+          this.eventService.createPrice(res).subscribe(response => {
+            this.dataService.handlepriceList();
+          })
+        }
       }
     )
   }
   eventClick(calEvent, jsEvent, activeView) {
-    // console.log(calEvent);
     const dialogRef = this.dialog.open(EventDialogComponent, {
       data: calEvent.data
     })
     dialogRef.afterClosed().subscribe(
       res => {
-        // console.log(calEvent)
-        this.eventService.updatePriceById(calEvent.data.id, res).subscribe(response => {
-          this.dataService.handlepriceList();
-        })
+        if (res) {
+          this.eventService.updatePriceById(calEvent.data.id, res).subscribe(response => {
+            this.dataService.handlepriceList();
+          })
+        }
       }
     )
   }
@@ -66,7 +67,6 @@ export class FullCalendarComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.eventData.currentValue) {
       this.eventData = changes.eventData.currentValue;
-      // console.log(this.eventData, changes.eventData.currentValue);
       this.defaultConfigurations.events = this.eventData;
       $('#full-calendar').fullCalendar('destroy');
       $('#full-calendar').fullCalendar(this.defaultConfigurations);
