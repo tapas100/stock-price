@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Update Price</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Enter Stock Price</mat-label>
+    <input matInput [(ngModel)]="input">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="input" cdkFocusInitial (click)="submit()">Ok</button>
+</div>
