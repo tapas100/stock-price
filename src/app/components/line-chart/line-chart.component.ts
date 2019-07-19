@@ -14,10 +14,8 @@ export class LineChartComponent implements OnInit {
       text: "Stock Price"
     },
   };
-  // chartCallback: Highcharts.ChartCallbackFunction = function (chart) { ... } // optional function, defaults to null
   updateFlag: boolean = false; // optional boolean
   oneToOneFlag: boolean = true; // optional boolean, defaults to false
-  runOutsideAngular: boolean = false; // optional boolean, defaults to false
   constructor() { }
 
   ngOnInit() {
