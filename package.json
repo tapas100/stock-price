@@ -28,7 +28,7 @@
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "fullcalendar": "^3.10.0",
-    "highcharts": "^6.2.0",
+    "highcharts": "^8.2.0",
     "highcharts-angular": "^2.4.0",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
